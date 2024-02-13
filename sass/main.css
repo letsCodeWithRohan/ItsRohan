@@ -1,0 +1,508 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@font-face {
+  font-family: nenu;
+  src: url(../font/NeueMontreal-Regular.otf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+.container {
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+  position: relative;
+}
+.container .menu {
+  width: 60px;
+  height: 60px;
+  background: dodgerblue;
+  z-index: 80;
+  border-radius: 50%;
+  position: fixed;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  top: 30px;
+  transition: all 0.4s ease;
+  right: 30px;
+  opacity: 1;
+  scale: 1;
+  cursor: pointer;
+}
+.container .menu.disabled {
+  opacity: 0;
+  scale: 0;
+  transition: all 0.4s ease;
+}
+.container .menu h3 {
+  font-weight: 100;
+  transition: all 0.5s ease;
+  scale: 1;
+}
+.container .menu h3.hide {
+  scale: 0;
+  display: none;
+}
+.container .menu h2 {
+  transition: all 0.5s ease;
+  scale: 1;
+}
+.container .menu h2.hide {
+  scale: 0;
+  display: none;
+}
+.container aside {
+  position: fixed;
+  background: #111;
+  justify-content: space-between;
+  height: 100vh;
+  width: 35vw;
+  color: #ddd;
+  top: 0;
+  right: 0;
+  z-index: 78;
+  transition: 0.5s linear all;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 0;
+}
+.container aside.hide {
+  transform: translateX(100%);
+  border-radius: 50%;
+}
+.container aside.hide .top,
+.container aside.hide nav,
+.container aside.hide .bottom {
+  transform: translateX(20vw);
+}
+.container aside .top {
+  padding: 20% 2% 3%;
+  transition: all linear 0.5s;
+  border-bottom: 1px solid #ddd;
+  width: 70%;
+}
+.container aside nav {
+  display: flex;
+  transition: all linear 0.5s;
+  flex-direction: column;
+  width: 70%;
+  gap: 1vh;
+  padding: 2%;
+  position: relative;
+}
+.container aside nav li {
+  list-style: none;
+}
+.container aside nav li a {
+  padding: 5px 0;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.5em;
+  position: relative;
+}
+.container aside .bottom {
+  transition: all linear 0.5s;
+  border-top: 1px solid #ddd;
+  padding: 5% 2% 5%;
+  width: 70%;
+}
+.container aside .bottom .links {
+  margin-top: 5%;
+  padding: 10px 0;
+  display: flex;
+  gap: 5%;
+}
+.container aside .bottom .links a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+.container aside .bottom .links a::after {
+  transition: all linear 0.3s;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background: #ddd;
+}
+.container aside .bottom .links a:hover::after {
+  width: 100%;
+}
+.container .preloader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  height: 100vh;
+  background: #1C1D20;
+  overflow: hidden;
+  color: #fff;
+}
+.container .preloader .inner {
+  display: flex;
+  flex-direction: column;
+  height: 8vh;
+  overflow: hidden;
+}
+.container .preloader .inner p {
+  height: 8vh;
+  font-size: 1.8em;
+  text-align: center;
+}
+.container .hero {
+  background: #999D9E;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding-top: 20px;
+}
+.container .hero header {
+  color: #fff;
+  height: 60px;
+  padding: 2vw;
+}
+.container .hero header .logo {
+  gap: 1vw;
+  padding: 5px;
+  font-size: 1rem;
+}
+.container .hero header .logo .copy {
+  transform: rotate(0);
+  font-size: 1.2rem;
+  transition: transform 0.5s ease;
+}
+.container .hero header .logo:hover .copy {
+  transform: rotate(360deg);
+}
+.container .hero header .logo .name {
+  overflow: hidden;
+  text-wrap: nowrap;
+  transition: all linear 0.5s;
+  width: 54%;
+}
+.container .hero header .logo .name > p {
+  transition: all linear 0.5s;
+  padding-left: 15px;
+  transform: translateX(0%);
+}
+.container .hero header .logo:hover .name {
+  width: 57%;
+}
+.container .hero header .logo:hover .name > p {
+  transform: translateX(-56%);
+}
+.container .hero header nav {
+  list-style: none;
+  gap: 3vw;
+}
+.container .hero header nav li {
+  position: relative;
+}
+.container .hero header nav li a {
+  text-decoration: none;
+  color: #fff;
+}
+.container .hero header nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5px;
+  width: 5px;
+  transition: 0.3s all ease;
+  border-radius: 50%;
+  background: transparent;
+}
+.container .hero header nav li:hover::after {
+  background: white;
+}
+.container .hero main {
+  height: calc(100vh - 100px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.container .hero main .location {
+  background: #1C1D20;
+  width: 15vw;
+  justify-content: flex-end;
+  height: 18%;
+  color: #fff;
+  border-top-right-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: 1vw;
+  gap: 2vw;
+}
+.container .hero main .location p {
+  font-size: 1.1em;
+}
+.container .hero main .location .earth {
+  width: 6vw;
+  border-radius: 50%;
+  justify-content: center;
+  height: 6vw;
+  background: #999D9E;
+  font-size: 3rem;
+}
+.container .hero main .marquee {
+  position: relative;
+  margin-top: 7vh;
+  background: transparent;
+  color: #fff;
+  padding: 30px 0;
+  font-weight: 600;
+  font-size: 10vh;
+  overflow: hidden;
+}
+.container .hero main .marquee_inner {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
+  flex: auto;
+  flex-direction: row;
+}
+.container .hero main .marquee_part {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 0 40px;
+}
+.container .hero main .marquee_part h1 {
+  font-weight: 500;
+}
+.container .page2 {
+  height: 100vh;
+  background: lightblue;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.container .page2 .leftMover .inner {
+  gap: 2vw;
+}
+.container .page2 .leftMover .inner .item {
+  background: #fff;
+  width: 25vw;
+  border: 1px solid #000;
+  height: 35vh;
+  border-radius: 10px;
+}
+.container .page2 .rightMover .inner {
+  gap: 2vw;
+}
+.container .page2 .rightMover .inner .item {
+  background: #fff;
+  width: 25vw;
+  border: 1px solid #000;
+  height: 35vh;
+  border-radius: 10px;
+  transform: translateX(-6vw);
+}
+.container footer {
+  background: #222;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container footer .top {
+  color: #fff;
+  width: 100%;
+  height: 85%;
+  padding: 0 15%;
+}
+.container footer .top .up {
+  padding-top: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container footer .top .up .left {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.container footer .top .up .left h1 {
+  display: flex;
+  gap: 2vh;
+  align-items: center;
+  font-size: 14vh;
+  font-weight: 400;
+  letter-spacing: -0.05em;
+}
+.container footer .top .up .left .logo {
+  width: 15vh;
+  height: 15vh;
+  border-radius: 50%;
+  background: dodgerblue;
+}
+.container footer .top .up > h1 {
+  color: red;
+}
+.container footer .top .mid {
+  width: 100%;
+  background: #ddd;
+  height: 1px;
+  margin-top: 5vh;
+  position: relative;
+}
+.container footer .top .mid .btn {
+  width: 25vh;
+  position: absolute;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+  height: 25vh;
+  left: 70%;
+  background: dodgerblue;
+  display: grid;
+  place-items: center;
+}
+.container footer .top .last {
+  /* height: 9%; */
+  margin-top: 8vh;
+  display: flex;
+  gap: 10vh;
+}
+.container footer .top .last .btn {
+  background: transparent;
+  height: 90%;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+  padding: 15px 25px;
+  width: 25%;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 4;
+}
+.container footer .top .last .btn::after {
+  transition: all 0.2s linear;
+  content: "";
+  background: dodgerblue;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: translateY(100%);
+  z-index: -3;
+  top: 0;
+  left: 0;
+}
+.container footer .top .last .btn:hover::after {
+  transform: translateY(0%);
+}
+.container footer .bottom {
+  height: 15%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container footer .bottom .left {
+  width: 50%;
+  display: flex;
+  gap: 3vw;
+  color: #ddd;
+  align-items: center;
+  padding: 0 2vw;
+}
+.container footer .bottom .left .sub-l {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+.container footer .bottom .left .sub-l span {
+  text-transform: uppercase;
+  font-size: 0.8em;
+}
+.container footer .bottom .left .sub-l p {
+  font-size: 0.9em;
+}
+.container footer .bottom .right {
+  width: 28%;
+  transition: all linear 0.5s;
+  padding: 3% 0 2% 0;
+  color: #ddd;
+  /* width: 70%; */
+}
+.container footer .bottom .right p {
+  color: #ddd;
+  font-size: 0.8em;
+}
+.container footer .bottom .right .links {
+  /* margin-top: 5%; */
+  padding: 10px 0;
+  display: flex;
+  gap: 5%;
+}
+.container footer .bottom .right .links a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+.container footer .bottom .right .links a::after {
+  transition: all linear 0.3s;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -3px;
+  width: 0%;
+  height: 1px;
+  background: #ddd;
+}
+.container footer .bottom .right .links a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .container aside {
+    width: 100vw;
+  }
+  .container aside .top,
+  .container aside nav,
+  .container aside .bottom {
+    width: 95%;
+  }
+  .container footer .top {
+    height: 75%;
+  }
+  .container footer .bottom {
+    height: 25%;
+    padding: 5vw;
+    flex-direction: column-reverse;
+  }
+  .container footer .bottom .left {
+    margin-top: 5%;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .container footer .bottom .right {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+  }
+}/*# sourceMappingURL=main.css.map */
